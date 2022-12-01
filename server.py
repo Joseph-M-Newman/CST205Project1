@@ -18,7 +18,7 @@ def redditApiSearch(reddit, word):
 		print(submission.title)
 
 #test functionality for apiSearch returns tokens; convert tokens
-redditApiSearch(reddit, "programmig")
+redditApiSearch(reddit, "tempword")
 app = Flask(__name__,  static_folder="public", static_url_path="")
 
 @app.route('/')
