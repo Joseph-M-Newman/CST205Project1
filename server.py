@@ -11,7 +11,8 @@ reddit = praw.Reddit(
 	username="Csumbproject",
 )
 reddit.read_only = False
-
+# documantation of PRAW is located https://praw.readthedocs.io/en/stable/getting_started/quick_start.html
+# this holds the functions of what reddit can pull and how to use the tokens provided;
 def redditApiSearch(reddit, word):
 	for submission in reddit.front.hot():
 		print(submission.title)
