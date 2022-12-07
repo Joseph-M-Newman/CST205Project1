@@ -69,11 +69,11 @@ def trends():
 
     title = []
     for title in abc.find_all("h2"):
-	title.append(title["h2"])
+        title.append(title["h2"])
 
     href = []
     for link in abc.find_all('a', href=True):
-	href.append(link['href'])
+        href.append(link['href'])
 
     #Titles 14-18
     story1title = title[14]
