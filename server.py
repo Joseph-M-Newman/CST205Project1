@@ -62,29 +62,31 @@ def trends():
     return flask.render_template("index.html")
 
 @app.route('/abcnews_trends')
-def abcnews():
-	webpage_response = requests.get('https://abcnews.go.com/')
-	webpage = webpage_response.content
-	abc = BeautifulSoup(webpage, "html.parser")
+def trends():
+    webpage_response = requests.get('https://abcnews.go.com/')
+    webpage = webpage_response.content
+    abc = BeautifulSoup(webpage, "html.parser")
 
-	title = []
-	for title in abc.find_all("h2"):
-		title.append(title["h2"])
+    title = []
+    for title in abc.find_all("h2"):
+	title.append(title["h2"])
 
-	href = []
-	for link in abc.find_all('a', href=True):
-		href.append(link['href'])
+    href = []
+    for link in abc.find_all('a', href=True):
+	href.append(link['href'])
 
-	#Titles 14-18
-	story1title = title[14]
-	story2title = title[15]
-	story3title = title[16]
-	story3title = title[17]
-	story4title = title[18]
+    #Titles 14-18
+    story1title = title[14]
+    story2title = title[15]
+    story3title = title[16]
+    story3title = title[17]
+    story4title = title[18]
 
-	#Links 16-20
-	story1link = href[16]
-	story2link = href[17]
-	story3link = href[18]
-	story4link = href[19]
-	story5link = href[20]
+    #Links 16-20
+    story1link = href[16]
+    story2link = href[17]
+    story3link = href[18]
+    story4link = href[19]
+    story5link = href[20]
+	
+    return flask.render_template("abcnews_trends.html")
