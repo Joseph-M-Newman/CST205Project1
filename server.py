@@ -33,7 +33,7 @@ if __name__ == "__main__":
     app.run(debug=True)
 
 
-twitter
+#twitter
 bearer_token = "AAAAAAAAAAAAAAAAAAAAAKvrjQEAAAAAC7rhBPngaUoWZtiE2Po8AI7K0bM%3De9ddHzssMxizr1AxPW4EBmqwKldD8rGDLHnhtXVNXuNd67vcCU"
 
 consumer_key = "llUeaLvBSqztrsxAMisU5YFTc"
@@ -47,20 +47,19 @@ auth.set_access_token(access_token, access_token_secret)
 
 @app.route('/twitter_trends')
 def trends():
-api = tweepy.API(auth)
-#america trends: 23424977
-loc = 1
-locname = 'Earth'
-#allow user to enter a country, find the corresponding country IDs
-trends = api.get_place_trends(loc)[0]['trends']
+    api = tweepy.API(auth)
+    #america trends: 23424977
+    loc = 1
+    locname = 'Earth'
+    #allow user to enter a country, find the corresponding country IDs
+    trends = api.get_place_trends(loc)[0]['trends']
 
-#pprint(trends[0]['name'])
+    #pprint(trends[0]['name'])
 
-print('Top 5 Trending in '+ locname +': \n', '1. ' + trends[0]['name'] + '\n',
+    print('Top 5 Trending in '+ locname +': \n', '1. ' + trends[0]['name'] + '\n',
 '2. ' + trends[1]['name'] + '\n', '3. ' + trends[2]['name'] + '\n', '4. ' + trends[3]['name'] + '\n', '5. ' + trends[4]['name'] + '\n')
 
-    
-return flask.render_template("index.html")
+    return flask.render_template("index.html")
 
 @app.route('/abcnews_trends')
 def trends():
