@@ -37,6 +37,16 @@
 			</div>
 
 		</div>
+		<div class=“webscrap-container”>
+            <div id=“Body-Info” class=“parent” >
+                {% if movie == True%}
+                <h2>Top Movies</h2>
+                    {%for m in mov %}
+                    <p class=“text-muted”>{{m}}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
 	</div>
 	
 	{% endblock %}

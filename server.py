@@ -25,6 +25,39 @@ def redditApiSearch(reddit, word):
 	return s
 
 #End Reddit
+def IMDB():
+	#Shawshank Redemption Image
+	shaw = "https://flxt.tmsimg.com/assets/p15987_p_v8_ai.jpg"
+
+	#Godfather Image
+	godfather = "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster.png/0/images/masterrepository/fandango/1463/The_Godfather-2.jpg"
+
+	#The dark knight
+	batman = "https://images.pristineauction.com/158/1582578/main_1597378492-The-Dark-Knight-27x40-Movie-Poster-PristineAuction.com.jpg"
+
+	#Lord of the rings
+	LOTR = "https://ak1.ostkcdn.com/images/products/is/images/direct/ce9596d427dd2f53a3c8f9e1dba2d34e10901e8d/%22Lord-of-the-Rings-The-Return-of-the-King-%282003%29%22-Poster-Print.jpg"
+
+	#Schindlers List
+	Schin = "https://www.themoviedb.org/t/p/original/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg"
+
+	my_site = 'https://www.imdb.com/search/title/?groups=top_100&sort=user_rating,desc'
+
+	movieList = [shaw,godfather,batman,LOTR,Schin]
+	all_movies = []
+
+
+	req = Request(
+		my_site,
+		headers={'User-Agent': 'Mozilla/5.0'}
+	)
+
+	resp = urlopen(req)
+	soup = BeautifulSoup(resp.read(), 'lxml')
+	all_movies = soup.find_all("h3")
+	top_5 = all_movies[:5]
+
+	return top_5,movieList
 
 # Begining abc Trends
 def getTrending():
@@ -104,14 +137,18 @@ def display():
 		t = False
 		reditt = False
 		tre = False
+		movie = False
 		twitter = request.form["twitter"]
 		reddit = request.form["reddit"]
 		trending = request.form["trending"]
+		movie = request.form["movie"]
 		#keyword = request.form["keyword"]
 		red = []
 		twit = []
 		trend = []
 		trend2 = []
+		mov = []
+		mov1 = []
 		if twitter == "Twitter":
 			t = True
 			twit = getTwitter()
@@ -130,7 +167,12 @@ def display():
 			tre = True
 			trend, trend2 = getTrending()
 			print(trend)
-		return render_template("display.html", red = red[0:10], redTrue = reditt, twit=twit, twitTrue = t, trend = trend, trend2 = trend2, trendTrue = tre)
+		if movie == "Movie":
+			movie = True
+			mov,mov1 = IMDB()
+
+			
+		return render_template("display.html", red = red[0:10], redTrue = reditt, twit=twit, twitTrue = t, trend = trend, trend2 = trend2, trendTrue = tre,movie = movie,mov = mov, mov1 = mov1)
 
 if __name__ == "__main__":
 	app.run(debug=True)
