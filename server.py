@@ -99,7 +99,7 @@ def display():
 		twitter = request.form["twitter"]
 		reddit = request.form["reddit"]
 		trending = request.form["trending"]
-		keyword = request.form["keyword"]
+		#keyword = request.form["keyword"]
 		red = []
 		twit = []
 		trend = []
@@ -115,7 +115,7 @@ def display():
 				username="Csumbproject",
 			)
 			r.read_only = False
-			red = redditApiSearch(r, keyword)
+			red = redditApiSearch(r, "")
 			reditt = True
 		if trending == "Trending":
 			tre = True
