@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	console.log("test");
 	$("#twit").mousedown(function(){
 		console.log("Checked");
 		if($("#twit").is(":checked") ) {

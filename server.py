@@ -1,3 +1,11 @@
+'''
+Authors: Luke Berry, Nathan Savonen, Frank Perez, Joseph Newman
+Date: 12/14/2022
+Course: CST 205
+Title: CST 205 Final Project
+Abstract: Design and develop a web-app that finds the top trends of 
+		  Various social medias and place it all in one hub
+'''
 from flask import Flask, render_template, redirect, request, url_for
 import flask
 import praw
@@ -103,6 +111,7 @@ def display():
 		red = []
 		twit = []
 		trend = []
+		trend2 = []
 		if twitter == "Twitter":
 			t = True
 			twit = getTwitter()

@@ -4,43 +4,38 @@
 {% endblock %}
 <body>
 	{% block content %}
-	<div class="result-container">
-		<div class="twitter-container">
-			<div id="Body-Info">
+	<div class="result-container" style="text-align: center;">
+		<div class="twitter-container" style="text-align: center;">
+			<div id="Body-Info" class="parent">
 				{%if twitTrue == True%}
 				<h2>Twitter Trending</h2>
 					{%for t in twit%}
-					<p>{{t}}</p>
+					<p class="text-muted">{{t}}</p>
 					{% endfor %}
 				{% endif %}
 			</div>
 		</div>
 		<div class="reddit-container">
-			<div id="Body-Info">
+			<div id="Body-Info" class="parent" >
 				{%if redTrue == True %}
 				<h2>Reddit Trending</h2>
 					{% for r in red%}
-					<p>{{r}}</p>
+					<p class="text-muted">{{r}}</p>
 					{% endfor %}
 				{% endif %}
 			</div>
 		</div>
 		
 		<div class="webscrap-container">
-			<div id="Body-Info">
+			<div id="Body-Info" class="parent" >
 				{% if trendTrue == True%}
 				<h2>Abc Trending</h2>
 					{%for t in trend %}
-					<p>{{t}}</p>
+					<p class="text-muted">{{t}}</p>
 					{% endfor %}
 				{% endif %}
 			</div>
 
-		</div>
-		<div class="movie-container">
-			<div id="Body-Info">
-
-			</div>
 		</div>
 	</div>
 	

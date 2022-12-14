@@ -1,0 +1,12 @@
+h2{
+	text-align: center;
+}
+.topTrend{
+	text-align: center;
+	border-bottom: 1px solid black;
+}
+
+.parent {
+	text-align: center;
+	border-bottom: 1rem solid black;
+  }
