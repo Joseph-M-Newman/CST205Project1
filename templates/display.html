@@ -4,38 +4,36 @@
 {% endblock %}
 <body>
 	{% block content %}
-	<div id="search-container" style="text-align: center;">
-		<div style="font-size: 20px;"id="check-box-buttons">
-			<form action="/display" method="post">
-			<input type="text" id="twitter" name="twitter" value="Twitter">
-			<label for="twitter">Twitter</label><br>
-			<input type="text" id="reddit" name="reddit" value="Reddit">
-			<label for="reddit">Reddit</label><br>
-			<input type="text" id="trending" name="trending" value="Trending">
-			<label for="trending">Trending</label> <br>
-			<input type="text" name="keyword">
-			<input type="submit" value ="submit"/>
-		</form>
-		
-		
-
-		</div>
-	</div>
-
 	<div class="result-container">
 		<div class="twitter-container">
 			<div id="Body-Info">
+				{%if twitTrue == True%}
+				<h2>Twitter Trending</h2>
+					{%for t in twit%}
+					<p>{{t}}</p>
+					{% endfor %}
+				{% endif %}
 			</div>
 		</div>
 		<div class="reddit-container">
 			<div id="Body-Info">
-
+				{%if redTrue == True %}
+				<h2>Reddit Trending</h2>
+					{% for r in red%}
+					<p>{{r}}</p>
+					{% endfor %}
+				{% endif %}
 			</div>
 		</div>
 		
 		<div class="webscrap-container">
 			<div id="Body-Info">
-
+				{% if trendTrue == True%}
+				<h2>Abc Trending</h2>
+					{%for t in trend %}
+					<p>{{t}}</p>
+					{% endfor %}
+				{% endif %}
 			</div>
 
 		</div>
