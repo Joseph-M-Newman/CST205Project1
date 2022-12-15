@@ -25,5 +25,14 @@ $(document).ready(function(){
 			$("#trending").val("Trending");
 		}
 	});
+
+	$("#movies").mousedown(function(){
+		if($("#movies").is(":checked") ) {
+			$("#movie").val("");
+		} else if($("#movies").not(":checked") ){
+			$("#movie").val("Movie");
+		}
+	});
+
 });
 

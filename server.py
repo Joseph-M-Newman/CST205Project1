@@ -7,6 +7,8 @@ Abstract: Design and develop a web-app that finds the top trends of
 		  Various social medias and place it all in one hub
 '''
 from flask import Flask, render_template, redirect, request, url_for
+from urllib.request import Request, urlopen
+import lxml
 import flask
 import praw
 import tweepy
@@ -44,20 +46,23 @@ def IMDB():
 	my_site = 'https://www.imdb.com/search/title/?groups=top_100&sort=user_rating,desc'
 
 	movieList = [shaw,godfather,batman,LOTR,Schin]
-	all_movies = []
+	am = []
 
 
-	req = Request(
-		my_site,
-		headers={'User-Agent': 'Mozilla/5.0'}
-	)
-
-	resp = urlopen(req)
-	soup = BeautifulSoup(resp.read(), 'lxml')
+	# req = Request(
+	# 	my_site,
+	# 	headers={'User-Agent': 'Mozilla/5.0'}
+	# )
+	r = requests.get(my_site)
+	resp = r.content
+	soup = BeautifulSoup(resp, 'html.parser')
 	all_movies = soup.find_all("h3")
+	for a in all_movies:
+		for b in a.find_all('a', href=True):
+			am.append(b.string)
 	top_5 = all_movies[:5]
 
-	return top_5,movieList
+	return am,movieList
 
 # Begining abc Trends
 def getTrending():
